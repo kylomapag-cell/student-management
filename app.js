@@ -109,5 +109,3 @@ app.get('/students/search', (req, res) => {
         }
     );
 });
-
-// Student Information System
