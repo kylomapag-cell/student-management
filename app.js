@@ -110,4 +110,4 @@ app.get('/students/search', (req, res) => {
     );
 });
 
-// Student Management Portal
+// Student Information System
