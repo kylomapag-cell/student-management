@@ -1,4 +1,4 @@
-
+```ejs
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,59 +11,77 @@
 
 <div class="container small-container">
     <div class="card">
+
         <h1>Edit Student</h1>
+        <p class="form-description">Update the student's information below.</p>
 
         <form action="/students/edit/<%= student.id %>" method="POST">
 
-            <label>Student ID</label>
-            <input
-                type="text"
-                name="student_id"
-                value="<%= student.student_id %>"
-                required
-            >
+            <div class="form-group">
+                <label for="student_id">Student ID</label>
+                <input
+                    type="text"
+                    id="student_id"
+                    name="student_id"
+                    value="<%= student.student_id %>"
+                    required
+                >
+            </div>
 
-            <label>First Name</label>
-            <input
-                type="text"
-                name="first_name"
-                value="<%= student.first_name %>"
-                required
-            >
+            <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input
+                    type="text"
+                    id="first_name"
+                    name="first_name"
+                    value="<%= student.first_name %>"
+                    required
+                >
+            </div>
 
-            <label>Last Name</label>
-            <input
-                type="text"
-                name="last_name"
-                value="<%= student.last_name %>"
-                required
-            >
+            <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input
+                    type="text"
+                    id="last_name"
+                    name="last_name"
+                    value="<%= student.last_name %>"
+                    required
+                >
+            </div>
 
-            <label>Course</label>
-            <input
-                type="text"
-                name="course"
-                value="<%= student.course %>"
-                required
-            >
+            <div class="form-group">
+                <label for="course">Course</label>
+                <input
+                    type="text"
+                    id="course"
+                    name="course"
+                    value="<%= student.course %>"
+                    required
+                >
+            </div>
 
-            <label>Year Level</label>
-            <input
-                type="number"
-                name="year_level"
-                min="1"
-                max="5"
-                value="<%= student.year_level %>"
-                required
-            >
+            <div class="form-group">
+                <label for="year_level">Year Level</label>
+                <select id="year_level" name="year_level" required>
+                    <option value="1" <%= Number(student.year_level) === 1 ? 'selected' : '' %>>1st Year</option>
+                    <option value="2" <%= Number(student.year_level) === 2 ? 'selected' : '' %>>2nd Year</option>
+                    <option value="3" <%= Number(student.year_level) === 3 ? 'selected' : '' %>>3rd Year</option>
+                    <option value="4" <%= Number(student.year_level) === 4 ? 'selected' : '' %>>4th Year</option>
+                    <option value="5" <%= Number(student.year_level) === 5 ? 'selected' : '' %>>5th Year</option>
+                </select>
+            </div>
 
-            <label>Email</label>
-            <input
-                type="email"
-                name="email"
-                value="<%= student.email %>"
-                required
-            >
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value="<%= student.email %>"
+                    required
+                >
+            </div>
 
             <div class="form-buttons">
                 <button type="submit" class="btn btn-primary">
@@ -79,5 +97,10 @@
     </div>
 </div>
 
+<footer class="footer">
+    Student Management System
+</footer>
+
 </body>
 </html>
+```
