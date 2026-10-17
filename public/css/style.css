@@ -1,0 +1,299 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f4f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Main Container */
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+/* Header */
+.header {
+    background-color: #2869a8;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.header nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.header nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.header nav a:hover {
+    text-decoration: underline;
+}
+
+/* Section Heading */
+h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+/* Search and Add Student */
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.search-form {
+    display: flex;
+    flex: 1;
+    gap: 10px;
+}
+
+.search-box {
+    flex: 1;
+    min-width: 0;
+    padding: 12px;
+    font-size: 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+}
+
+.search-box:focus {
+    outline: 2px solid #93bce5;
+    border-color: #2869a8;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 11px 16px;
+    background-color: #2869a8;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn:hover {
+    background-color: #1e5287;
+}
+
+.add-btn {
+    font-weight: bold;
+}
+
+/* Student Table */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+}
+
+.student-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.student-table th,
+.student-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.student-table th {
+    background-color: #e7edf3;
+    color: #222;
+}
+
+.student-table tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.student-table tbody tr:hover {
+    background-color: #eaf2fa;
+}
+
+.student-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Table Actions */
+.student-table a {
+    text-decoration: none;
+}
+
+.student-table a:hover {
+    text-decoration: none;
+}
+
+/* Align Edit and Delete Buttons */
+.action-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.action-buttons form {
+    display: inline-flex;
+    margin: 0;
+}
+
+/* Same Size for Edit and Delete */
+.action-buttons .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 88px;
+    height: 44px;
+    padding: 0 12px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+/* Edit Button */
+.action-buttons .btn-edit {
+    background-color: #2b6cb0;
+}
+
+.action-buttons .btn-edit:hover {
+    background-color: #1e4e8c;
+}
+
+/* Delete Button */
+.action-buttons .btn-delete {
+    background-color: #dc2626;
+}
+
+.action-buttons .btn-delete:hover {
+    background-color: #b91c1c;
+}
+
+/* Forms for Adding and Editing Students */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Footer */
+.footer {
+    margin-top: 20px;
+    color: #777;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .container {
+        width: 98%;
+        padding: 12px;
+    }
+
+    .header h1 {
+        font-size: 21px;
+    }
+
+    .actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-form {
+        width: 100%;
+    }
+
+    .add-btn {
+        text-align: center;
+    }
+
+    .student-table th,
+    .student-table td {
+        padding: 9px;
+        font-size: 13px;
+    }
+
+    .action-buttons {
+        justify-content: flex-start;
+        gap: 6px;
+    }
+
+    .action-buttons .btn {
+        width: 78px;
+        height: 40px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 19px;
+    }
+
+    .search-form {
+        flex-wrap: wrap;
+    }
+
+    .search-box {
+        flex-basis: 100%;
+        width: 100%;
+    }
+
+    .search-form .btn {
+        width: 100%;
+    }
+}
