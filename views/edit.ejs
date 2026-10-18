@@ -1,106 +1,99 @@
-```ejs
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Student</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
+<%- include('partials/header', { title: 'Edit Student - Student Management System' }) %>
 
-<div class="container small-container">
-    <div class="card">
-
-        <h1>Edit Student</h1>
-        <p class="form-description">Update the student's information below.</p>
-
-        <form action="/students/edit/<%= student.id %>" method="POST">
-
-            <div class="form-group">
-                <label for="student_id">Student ID</label>
-                <input
-                    type="text"
-                    id="student_id"
-                    name="student_id"
-                    value="<%= student.student_id %>"
-                    required
-                >
-            </div>
-
-            <div class="form-group">
-                <label for="first_name">First Name</label>
-                <input
-                    type="text"
-                    id="first_name"
-                    name="first_name"
-                    value="<%= student.first_name %>"
-                    required
-                >
-            </div>
-
-            <div class="form-group">
-                <label for="last_name">Last Name</label>
-                <input
-                    type="text"
-                    id="last_name"
-                    name="last_name"
-                    value="<%= student.last_name %>"
-                    required
-                >
-            </div>
-
-            <div class="form-group">
-                <label for="course">Course</label>
-                <input
-                    type="text"
-                    id="course"
-                    name="course"
-                    value="<%= student.course %>"
-                    required
-                >
-            </div>
-
-            <div class="form-group">
-                <label for="year_level">Year Level</label>
-                <select id="year_level" name="year_level" required>
-                    <option value="1" <%= Number(student.year_level) === 1 ? 'selected' : '' %>>1st Year</option>
-                    <option value="2" <%= Number(student.year_level) === 2 ? 'selected' : '' %>>2nd Year</option>
-                    <option value="3" <%= Number(student.year_level) === 3 ? 'selected' : '' %>>3rd Year</option>
-                    <option value="4" <%= Number(student.year_level) === 4 ? 'selected' : '' %>>4th Year</option>
-                    <option value="5" <%= Number(student.year_level) === 5 ? 'selected' : '' %>>5th Year</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value="<%= student.email %>"
-                    required
-                >
-            </div>
-
-            <div class="form-buttons">
-                <button type="submit" class="btn btn-primary">
-                    Update Student
-                </button>
-
-                <a href="/" class="btn btn-secondary">
-                    Cancel
-                </a>
-            </div>
-
-        </form>
+<div class="card form-card">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Edit Student Details</h1>
+      <p class="page-subtitle">Update information for <%= student.first_name %> <%= student.last_name %></p>
     </div>
+  </div>
+
+  <% if (typeof error !== 'undefined' && error) { %>
+    <div class="alert alert-danger">
+      <%= error %>
+    </div>
+  <% } %>
+
+  <form action="/students/edit/<%= student.id %>" method="POST" novalidate>
+    <div class="form-group">
+      <label class="form-label" for="student_id">Student ID</label>
+      <input 
+        type="text" 
+        id="student_id" 
+        name="student_id" 
+        class="form-control" 
+        value="<%= (typeof formData !== 'undefined' && formData && formData.student_id) ? formData.student_id : student.student_id %>" 
+        required
+      >
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="first_name">First Name</label>
+      <input 
+        type="text" 
+        id="first_name" 
+        name="first_name" 
+        class="form-control" 
+        value="<%= (typeof formData !== 'undefined' && formData && formData.first_name) ? formData.first_name : student.first_name %>" 
+        required
+      >
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="last_name">Last Name</label>
+      <input 
+        type="text" 
+        id="last_name" 
+        name="last_name" 
+        class="form-control" 
+        value="<%= (typeof formData !== 'undefined' && formData && formData.last_name) ? formData.last_name : student.last_name %>" 
+        required
+      >
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="course">Course</label>
+      <input 
+        type="text" 
+        id="course" 
+        name="course" 
+        class="form-control" 
+        value="<%= (typeof formData !== 'undefined' && formData && formData.course) ? formData.course : student.course %>" 
+        required
+      >
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="year_level">Year Level (1-5)</label>
+      <input 
+        type="number" 
+        id="year_level" 
+        name="year_level" 
+        class="form-control" 
+        min="1" 
+        max="5" 
+        value="<%= (typeof formData !== 'undefined' && formData && formData.year_level) ? formData.year_level : student.year_level %>" 
+        required
+      >
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="email">Email Address</label>
+      <input 
+        type="email" 
+        id="email" 
+        name="email" 
+        class="form-control" 
+        value="<%= (typeof formData !== 'undefined' && formData && formData.email) ? formData.email : student.email %>" 
+        required
+      >
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Update Student</button>
+      <a href="/" class="btn btn-secondary">Cancel</a>
+    </div>
+  </form>
 </div>
 
-<footer class="footer">
-    Student Management System
-</footer>
-
-</body>
-</html>
-```
+<%- include('partials/footer') %>

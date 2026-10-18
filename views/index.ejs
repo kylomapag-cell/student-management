@@ -1,104 +1,86 @@
+<%- include('partials/header', { title: 'Students List - Student Management System' }) %>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Management</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-
-    <!-- Main Content -->
-    <div class="container">
-
-        <h1>Student Management System</h1>
-
-        <div class="actions">
-            <!-- Search Form -->
-
-            <form action="/students/search" method="GET">
-                <input
-                    type="text"
-                    name="keyword"
-                    class="search-box"
-                    placeholder="Search by student ID, name, or course..."
-                    value="<%= typeof keyword !== 'undefined' ? keyword : '' %>"
-                >
-                <button type="submit" class="btn">Search</button>
-            </form>
-
-
-            <!-- Add Student Button -->
-            <a href="/students/add" class="btn">+ Add Student</a>
-
-        </div>
-
-        <hr>
-
-        <h2>Student List</h2>
-
-        <div class="table-wrapper">
-            <table class="student-table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Student ID</th>
-                        <th>Name</th>
-                        <th>Course</th>
-                        <th>Year</th>
-                        <th>Email</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <% students.forEach(student => { %>
-                        <tr>
-                            <td><%= student.id %></td>
-                            <td><%= student.student_id %></td>
-                            <td>
-                                <%= student.first_name %>
-                                <%= student.last_name %>
-                            </td>
-                            <td><%= student.course %></td>
-                            <td><%= student.year_level %></td>
-                            <td><%= student.email %></td>
-
-                            <td>
-                                <div class="action-buttons">
-                                    <a
-                                        href="/students/edit/<%= student.id %>"
-                                        class="btn btn-edit"
-                                    >
-                                        Edit
-                                    </a>
-
-                                    <form
-                                        action="/students/delete/<%= student.id %>"
-                                        method="POST"
-                                        onsubmit="return confirm('Are you sure you want to delete this student?');"
-                                    >
-                                        <button
-                                            type="submit"
-                                            class="btn btn-delete"
-                                        >
-                                            Delete
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                    <% }); %>
-                </tbody>
-            </table>
-        </div>
-
+<div class="card">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Student Records</h1>
+      <p class="page-subtitle">View, search, update, and manage student enrollments</p>
     </div>
+    <a href="/students/add" class="btn btn-primary">+ Add New Student</a>
+  </div>
 
-    <footer class="footer">
-        Student Management System
-    </footer>
+  <div class="controls-bar">
+    <form action="/students/search" method="GET" class="search-form">
+      <input 
+        type="text" 
+        name="keyword" 
+        class="search-input" 
+        placeholder="Search by ID, name, or course..." 
+        value="<%= typeof keyword !== 'undefined' ? keyword : '' %>"
+      >
+      <button type="submit" class="btn btn-secondary">Search</button>
+      <% if (typeof keyword !== 'undefined' && keyword.trim() !== '') { %>
+        <a href="/" class="btn btn-secondary" title="Clear search">Clear</a>
+      <% } %>
+    </form>
+  </div>
 
-</body>
-</html>
+  <% if (typeof keyword !== 'undefined' && keyword.trim() !== '') { %>
+    <div class="alert alert-info">
+      Showing search results for: <strong>"<%= keyword %>"</strong> (<%= students.length %> found)
+    </div>
+  <% } %>
+
+  <div class="table-responsive">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Student ID</th>
+          <th>Full Name</th>
+          <th>Course</th>
+          <th>Year Level</th>
+          <th>Email Address</th>
+          <th style="text-align: center;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (students && students.length > 0) { %>
+          <% students.forEach(student => { %>
+            <tr>
+              <td><%= student.id %></td>
+              <td><strong><%= student.student_id %></strong></td>
+              <td><%= student.first_name %> <%= student.last_name %></td>
+              <td><span class="badge badge-course"><%= student.course %></span></td>
+              <td><span class="badge">Year <%= student.year_level %></span></td>
+              <td><%= student.email %></td>
+              <td>
+                <div class="actions-cell" style="justify-content: center;">
+                  <a href="/students/edit/<%= student.id %>" class="btn btn-edit">Edit</a>
+                  <form action="/students/delete/<%= student.id %>" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete <%= student.first_name %> <%= student.last_name %> (<%= student.student_id %>)?');">
+                    <button type="submit" class="btn btn-delete">Delete</button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+          <% }); %>
+        <% } else { %>
+          <tr>
+            <td colspan="7">
+              <div class="empty-state">
+                <p>No student records found.</p>
+                <% if (typeof keyword !== 'undefined' && keyword.trim() !== '') { %>
+                  <a href="/" class="btn btn-secondary">Back to Full List</a>
+                <% } else { %>
+                  <a href="/students/add" class="btn btn-primary">Add the First Student</a>
+                <% } %>
+              </div>
+            </td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

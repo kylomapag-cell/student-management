@@ -1,404 +1,401 @@
-/* General Styles */
+/* =========================================================
+   Student Management System - Professional Blue & Gray Theme
+   Pure Vanilla CSS (No Frameworks)
+   ========================================================= */
+
+:root {
+  --primary-blue: #2563eb;
+  --primary-blue-hover: #1d4ed8;
+  --primary-blue-dark: #1e40af;
+  --primary-blue-light: #eff6ff;
+  --secondary-gray: #64748b;
+  --bg-slate: #f8fafc;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --danger-red: #ef4444;
+  --danger-red-hover: #dc2626;
+  --success-green: #10b981;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f3f4f6;
-    color: #333;
-    line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--bg-slate);
+  color: var(--text-dark);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header & Navigation */
+.navbar {
+  background-color: var(--primary-blue-dark);
+  color: #ffffff;
+  box-shadow: var(--shadow-md);
+  padding: 0.875rem 1.5rem;
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.nav-brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-link {
+  color: #e2e8f0;
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.875rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.nav-link.btn-cta {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.nav-link.btn-cta:hover {
+  background-color: var(--primary-blue-hover);
 }
 
 /* Main Container */
-.container {
-    width: 95%;
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
+.main-content {
+  flex: 1;
+  max-width: 1100px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.25rem;
 }
 
-/* Header */
-.header {
-    background-color: #2869a8;
-    color: white;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+/* Page Card */
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 1.75rem;
+  margin-bottom: 2rem;
 }
 
-.header h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.header nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+.page-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-blue-dark);
 }
 
-.header nav a {
-    color: white;
-    text-decoration: none;
+.page-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
 }
 
-.header nav a:hover {
-    text-decoration: underline;
-}
-
-/* Section Heading */
-h2 {
-    font-size: 20px;
-    margin-bottom: 15px;
-}
-
-/* Search and Add Student */
-.actions {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
+/* Action Controls (Search & Add) */
+.controls-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .search-form {
-    display: flex;
-    flex: 1;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  max-width: 480px;
 }
 
-.search-box {
-    flex: 1;
-    min-width: 0;
-    padding: 12px;
-    font-size: 15px;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
+.search-input {
+  flex: 1;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.search-box:focus {
-    outline: 2px solid #93bce5;
-    border-color: #2869a8;
+.search-input:focus {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 /* Buttons */
 .btn {
-    display: inline-block;
-    padding: 11px 16px;
-    background-color: #2869a8;
-    color: white;
-    text-decoration: none;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    cursor: pointer;
-    white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.125rem;
+  font-size: 0.925rem;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
-.btn:hover {
-    background-color: #1e5287;
+.btn-primary {
+  background-color: var(--primary-blue);
+  color: #ffffff;
 }
 
-.add-btn {
-    font-weight: bold;
+.btn-primary:hover {
+  background-color: var(--primary-blue-hover);
 }
 
-/* Student Table */
-.table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-    border: 1px solid #ddd;
-    border-radius: 7px;
+.btn-secondary {
+  background-color: #ffffff;
+  border-color: var(--border-color);
+  color: var(--text-dark);
 }
 
-.student-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
+.btn-secondary:hover {
+  background-color: var(--bg-slate);
 }
 
-.student-table th,
-.student-table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #e5e7eb;
+.btn-edit {
+  background-color: var(--primary-blue-light);
+  color: var(--primary-blue-dark);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  padding: 0.375rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
-.student-table th {
-    background-color: #e7edf3;
-    color: #222;
+.btn-edit:hover {
+  background-color: var(--primary-blue);
+  color: #ffffff;
 }
 
-.student-table tbody tr:nth-child(even) {
-    background-color: #f8fafc;
+.btn-delete {
+  background-color: #fee2e2;
+  color: var(--danger-red-hover);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  padding: 0.375rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
-.student-table tbody tr:hover {
-    background-color: #eaf2fa;
+.btn-delete:hover {
+  background-color: var(--danger-red);
+  color: #ffffff;
 }
 
-.student-table tbody tr:last-child td {
-    border-bottom: none;
+/* Table */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
 }
 
-/* Table Actions */
-.student-table a {
-    text-decoration: none;
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.925rem;
 }
 
-.student-table a:hover {
-    text-decoration: none;
+.data-table th {
+  background-color: #f1f5f9;
+  color: #334155;
+  font-weight: 600;
+  padding: 0.875rem 1rem;
+  border-bottom: 2px solid var(--border-color);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
 }
 
-/* Align Edit and Delete Buttons */
-.action-buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+.data-table td {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-dark);
 }
 
-.action-buttons form {
-    display: inline-flex;
-    margin: 0;
+.data-table tbody tr:hover {
+  background-color: #f8fafc;
 }
 
-/* Same Size for Edit and Delete */
-.action-buttons .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    width: 88px;
-    height: 44px;
-    padding: 0 12px;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1;
-    text-align: center;
-    text-decoration: none;
-    white-space: nowrap;
-    cursor: pointer;
+.data-table tbody tr:last-child td {
+  border-bottom: none;
 }
 
-/* Edit Button */
-.action-buttons .btn-edit {
-    background-color: #2b6cb0;
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.775rem;
+  font-weight: 600;
+  background-color: #e2e8f0;
+  color: #334155;
 }
 
-.action-buttons .btn-edit:hover {
-    background-color: #1e4e8c;
+.badge-course {
+  background-color: var(--primary-blue-light);
+  color: var(--primary-blue-dark);
 }
 
-/* Delete Button */
-.action-buttons .btn-delete {
-    background-color: #dc2626;
+.actions-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.action-buttons .btn-delete:hover {
-    background-color: #b91c1c;
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-muted);
 }
 
-/* Forms for Adding and Editing Students */
+.empty-state p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+/* Forms */
+.form-card {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 .form-group {
-    margin-bottom: 15px;
+  margin-bottom: 1.25rem;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+.form-label {
+  display: block;
+  margin-bottom: 0.375rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #334155;
 }
 
-.form-group input,
-.form-group select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #d1d5db;
-    border-radius: 5px;
-    font-size: 14px;
+.form-control {
+  width: 100%;
+  padding: 0.65rem 0.875rem;
+  font-size: 0.95rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background-color: #ffffff;
+}
+
+.form-control:focus {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+/* Alerts */
+.alert {
+  padding: 0.875rem 1rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.25rem;
+  font-size: 0.925rem;
+}
+
+.alert-danger {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+
+.alert-info {
+  background-color: var(--primary-blue-light);
+  border: 1px solid #bfdbfe;
+  color: var(--primary-blue-dark);
 }
 
 /* Footer */
 .footer {
-    margin-top: 20px;
-    color: #777;
-    font-size: 14px;
-    text-align: center;
+  background-color: #ffffff;
+  border-top: 1px solid var(--border-color);
+  padding: 1.25rem 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: auto;
 }
 
-/* Responsive Layout */
+/* Responsive */
 @media (max-width: 768px) {
-    .container {
-        width: 98%;
-        padding: 12px;
-    }
+  .controls-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
 
-    .header h1 {
-        font-size: 21px;
-    }
+  .search-form {
+    max-width: 100%;
+  }
 
-    .actions {
-        flex-direction: column;
-        align-items: stretch;
-    }
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    .search-form {
-        width: 100%;
-    }
-
-    .add-btn {
-        text-align: center;
-    }
-
-    .student-table th,
-    .student-table td {
-        padding: 9px;
-        font-size: 13px;
-    }
-
-    .action-buttons {
-        justify-content: flex-start;
-        gap: 6px;
-    }
-
-    .action-buttons .btn {
-        width: 78px;
-        height: 40px;
-        font-size: 13px;
-    }
-}
-
-@media (max-width: 480px) {
-    .header h1 {
-        font-size: 19px;
-    }
-
-    .search-form {
-        flex-wrap: wrap;
-    }
-
-    .search-box {
-        flex-basis: 100%;
-        width: 100%;
-    }
-
-    .search-form .btn {
-        width: 100%;
-    }
-}
-
-/* Edit Student Form */
-.small-container {
-    max-width: 650px;
-}
-
-.card {
-    padding: 25px;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-}
-
-.card h1 {
-    margin-bottom: 8px;
-    color: #2869a8;
-    font-size: 28px;
-}
-
-.form-description {
-    margin-bottom: 25px;
-    color: #777;
-}
-
-.card .form-group {
-    margin-bottom: 18px;
-}
-
-.card .form-group label {
-    display: block;
-    margin-bottom: 7px;
-    font-weight: bold;
-}
-
-.card .form-group input,
-.card .form-group select {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    font-size: 15px;
-    background-color: #fff;
-}
-
-.card .form-group input:focus,
-.card .form-group select:focus {
-    outline: 2px solid #93bce5;
-    border-color: #2869a8;
-}
-
-.form-buttons {
-    display: flex;
-    gap: 10px;
-    margin-top: 25px;
-}
-
-.form-buttons .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 42px;
-    padding: 10px 18px;
-    font-size: 14px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.btn-primary {
-    background-color: #2869a8;
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: #1e5287;
-}
-
-.btn-secondary {
-    background-color: #6b7280;
-    color: white;
-}
-
-.btn-secondary:hover {
-    background-color: #4b5563;
-}
-
-@media (max-width: 480px) {
-    .card {
-        padding: 16px;
-    }
-
-    .card h1 {
-        font-size: 23px;
-    }
-
-    .form-buttons {
-        flex-direction: column;
-    }
-
-    .form-buttons .btn {
-        width: 100%;
-    }
+  .actions-cell {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
