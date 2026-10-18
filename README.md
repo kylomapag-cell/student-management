@@ -20,7 +20,7 @@ A simple web-based Student Management System developed using:
 
 Clone the repository:
 ```bash
-git clone YOUR_REPOSITORY_URL
+git clone https://github.com/kylomapag-cell/student-management.git 
 ```
 
 Install dependencies:
